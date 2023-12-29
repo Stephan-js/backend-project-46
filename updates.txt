@@ -1,0 +1,38 @@
+**Game Version 0.2.0 (Alpha) - Update Log**
+
+*Published: 12/29/2023*
+
+**New Features:**
+
+1. **Game V1 Addition:**
+   - Introduced the initial version of the game with basic functionalities.
+
+2. **Test Module Integration:**
+   - Implemented a testing module to ensure the stability and reliability of the codebase.
+
+3. **Makefile Integration:**
+   - Added a Makefile for streamlined build and project management.
+
+4. **Gendif Source Code:**
+   - Created the initial source code for the 'gendif' module, with the primary file being 'functions.js.'
+
+**Upcoming Features:**
+
+1. **DeBugging Phase:**
+   - Initiating the debugging phase to identify and rectify any issues or glitches in the current implementation.
+
+2. **Optimization Process:**
+   - Focusing on optimizing the existing code for improved performance and efficiency.
+
+3. **Expansion of Test Coverage:**
+   - Adding more test cases to enhance the test coverage and ensure robustness.
+
+4. **Enhancing Mutability:**
+   - Working on making the codebase more mutable, allowing for easier modifications and updates.
+
+**Note:**
+This update marks the initial release of the game, focusing on introducing core components and basic functionalities. The upcoming phases will address debugging, optimization, test coverage expansion, and further improvements to make the system more adaptable and mutable.
+
+
+
+
