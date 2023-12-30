@@ -1,25 +1,14 @@
 
-import fs from 'fs';
 import _ from 'lodash';
-
-const readAndParseJason = (files) => {
-  try {
-    const data = fs.readFileSync(files, 'utf8')
-    return JSON.parse(data);
-  } catch {
-    console.error(files);
-    return null;
-  }
-};
+import readAndParseFile from "./functions.js";
 
 const getWithFunction = (wayFile0, wayFile1, functions) => {
   const files = {
-    file0: readAndParseJason(wayFile0), 
-    file1: readAndParseJason(wayFile1)
+    file0: readAndParseFile(wayFile0), 
+    file1: readAndParseFile(wayFile1)
   };
 
   if (!files.file1 || !files.file0 || !functions) {
-    console.error('Error 101');
     return undefined;
   };
 

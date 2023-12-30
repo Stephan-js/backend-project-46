@@ -34,6 +34,7 @@
 This update marks the initial release of the game, focusing on introducing core components and basic functionalities. The upcoming phases will address debugging, optimization, test coverage expansion, and further improvements to make the system more adaptable and mutable.
 
 
+
 **Game Version 0.3.0 (Alpha) - Update Log**
 
 *Published: 12/30/2023*
@@ -76,3 +77,10 @@ This update marks the initial release of the game, focusing on introducing core 
 
 **Note:**
 This update focuses on addressing specific issues, introducing new features, and enhancing the overall structure of the codebase. The emphasis is on refining the system and preparing for future feature additions.
+
+
+
+**Game Version 0.3.5 (Alpha) - Update Log**
+
+1. Delete README.md from .github/workfolows
+

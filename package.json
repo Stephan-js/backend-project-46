@@ -13,7 +13,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Stepan19999993/frontend-project-46.git"
-  }, 
+  },
   "author": "Hacer",
   "license": "ISC",
   "bugs": {
@@ -22,6 +22,8 @@
   "homepage": "https://github.com/Stepan19999993/frontend-project-46#readme",
   "dependencies": {
     "commander": "^11.1.0",
+    "ini": "^4.1.1",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
