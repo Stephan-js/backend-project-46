@@ -1,5 +1,5 @@
 # Name of workflow
-name: Tests
+name: head-tests
 
 # Trigger the workflow on push or pull request
 on:
@@ -42,7 +42,7 @@ jobs:
         # uses: paambaati/codeclimate-action@v5.0.0
         # # Add Code Climate secret key
         # env:
-        #   CC_TEST_REPORTER_ID: ${{0b1688fbcf7d8f5dddf611867bba1c29ffc4414464ea409274f87f43efaaabe1}}
+        #   CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         # with:
         #   coverageCommand: make test-coverage
         #   debug: true
