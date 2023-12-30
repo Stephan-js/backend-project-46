@@ -1,6 +1,6 @@
 
 import { Command } from "commander";
-import genDiff from "./fucntion/gendiff-src.js";
+import genDiff from "./function/gendiff-src.js";
 import getWithFunction from "./index.js";
 
 const program = new Command();
