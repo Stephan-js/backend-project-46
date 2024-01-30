@@ -2,21 +2,89 @@
 import { test, expect } from "@jest/globals";
 
 import getWithFunction from "../src";
-import genDiff from "../src/function/gendiff-src.js";
+import genDiffS from "../src/formats/standat-form.js";
+import genDiffP from "../src/formats/plain-form.js";
 
-const rightAnwerP0 = '{\n  - follow: false\n    host: hexlet.io\n  - proxy: 123.234.53.22';
-const rightAnwerP1 = '\n  - timeout: 50\n  + timeout: 20\n  + verbose: true\n}';
+const result = `{
+    common: {
+      + follow: false
+        setting1: Value 1
+      - setting2: 200
+      - setting3: true
+      + setting3: null
+      + setting4: blah blah
+      + setting5: {
+            key5: value5
+        }
+        setting6: {
+            doge: {
+              - wow: 
+              + wow: so much
+            }
+            key: value
+          + ops: vops
+        }
+    }
+    group1: {
+      - baz: bas
+      + baz: bars
+        foo: bar
+      - nest: {
+            key: value
+        }
+      + nest: str
+    }
+  - group2: {
+        abc: 12345
+        deep: {
+            id: 45
+        }
+    }
+  + group3: {
+        deep: {
+            id: {
+                number: 45
+            }
+        }
+        fee: 100500
+    }
+}`;
+
+const result2 = `{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}`;
+
+const result3 = `Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`;
 
 test('work1', () => {
-  expect(getWithFunction('files/json/file1.json', 'files/json/file2.json', genDiff)).toBe(rightAnwerP0 + rightAnwerP1);
+  expect(getWithFunction('files/json/fileh1.json', 'files/json/fileh2.json', genDiffS)).toBe(result);
 });
 
 test('work2', () => {
-  expect(getWithFunction('files/yaml/file1.yaml', 'files/yaml/file2.yml', genDiff)).toBe(rightAnwerP0 + rightAnwerP1);
+  expect(getWithFunction('files/yaml/file1.yaml', 'files/json/file2.json', genDiffS)).toBe(result2);
+});
+
+test('work3', () => {
+  expect(getWithFunction('files/json/fileh1.json', 'files/json/fileh2.json', genDiffP)).toBe(result3);
 });
 
 test('file1', () => {
-  expect(getWithFunction('', genDiff)).toBeUndefined();
+  expect(getWithFunction('', genDiffS)).toBeUndefined();
 });
 
 test('file2', () => {
@@ -24,5 +92,5 @@ test('file2', () => {
 });
 
 test('file3', () => {
-  expect(getWithFunction('files/json/file1.json', '', genDiff)).toBeUndefined();
+  expect(getWithFunction('files/json/file1.json', '', genDiffP)).toBeUndefined();
 });
