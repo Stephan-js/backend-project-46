@@ -5,7 +5,7 @@ install:
 	npm install ini
 install-dev:
 	npm install --save-dev jest
-gendiff:
-	node /src/gendiff.js
+munual-test:
+	node ./src/gendiff-cmd.js .\files\json\fileh1.json .\files\json\fileh2.json
 test:
 	npm test
