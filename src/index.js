@@ -1,5 +1,4 @@
-import _ from 'lodash';
-import readAndParseFile from './functions.js';
+import { readAndParseFile, getKeys } from './functions.js';
 
 const getWithFunction = (wayFile0, wayFile1, functions) => {
   const files = {
@@ -11,7 +10,7 @@ const getWithFunction = (wayFile0, wayFile1, functions) => {
     return undefined;
   }
 
-  const keys = [_.keys(files.file0).sort(), _.keys(files.file1).sort()];
+  const keys = [getKeys(files.file0), getKeys(files.file1)];
 
   return functions(keys, files);
 };

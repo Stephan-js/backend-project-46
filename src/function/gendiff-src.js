@@ -1,8 +1,5 @@
 import _ from 'lodash';
 
-const getSpaces = (deep) => ' '.repeat(deep * 4 - 2);
-const getKeys = (file) => _.keys(file).sort();
-
 const getAllFromObj = (obj, result, deep) => {
   const space = getSpaces(deep);
 
@@ -15,33 +12,6 @@ const getAllFromObj = (obj, result, deep) => {
     } else {
       result.push(`${space}  ${str}: ${obj[str]}`);
     }
-  }
-
-  return result;
-};
-
-const checkSameKey = (data) => {
-  const [, files, deep, result, sing, keyss, str] = data;
-  const space = getSpaces(deep);
-
-  if (files[`file${keyss.this}`][str] === files[`file${keyss.other}`][str]) {
-    result.push(`${space}  ${str}: ${files[`file${keyss.this}`][str]}`);
-  } else {
-    result.push(`${space}${sing.this} ${str}: ${files[`file${keyss.this}`][str]}`);
-    result.push(`${space}${sing.other} ${str}: ${files[`file${keyss.other}`][str]}`);
-  }
-
-  return result;
-};
-
-const checkStr = (data) => {
-  const [keys, files, deep, result, sing, keyss, str] = data;
-  const space = getSpaces(deep);
-
-  if (!keys[keyss.other].includes(str)) {
-    result.push(`${space}${sing.this} ${str}: ${files[`file${keyss.this}`][str]}`);
-  } else {
-    checkSameKey(data);
   }
 
   return result;
