@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import getDiff from './gendiff-src.js';
 import { getSpaces, getKeys } from '../functions.js';
 
