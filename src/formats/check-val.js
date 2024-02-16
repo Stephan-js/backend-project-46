@@ -17,7 +17,7 @@ const checkValue = (val) => {
     case 'NaN':
       return NaN;
     default:
-      return `${rVal}`;
+      return `'${rVal}'`;
   }
 };
 
