@@ -1,11 +1,10 @@
-
-import _ from "lodash";
+import _ from 'lodash';
 
 const getSpaces = (deep) => ' '.repeat(deep * 4 - 2);
 const getKeys = (file) => _.keys(file).sort();
 
 const getAllFromObj = (obj, result, deep) => {
-  let space = getSpaces(deep);
+  const space = getSpaces(deep);
 
   const keys = _.keys(obj).sort();
   for (const str of keys) {
@@ -22,14 +21,14 @@ const getAllFromObj = (obj, result, deep) => {
 };
 
 const checkSameKey = (data) => {
-  const [keys, files, deep, result, sing, keyss, str] = data;
+  const [, files, deep, result, sing, keyss, str] = data;
   const space = getSpaces(deep);
 
-  if (files['file' + keyss.this][str] === files['file' + keyss.other][str]) {
-    result.push(`${space}  ${str}: ${files['file' + keyss.this][str]}`);
+  if (files[`file${keyss.this}`][str] === files[`file${keyss.other}`][str]) {
+    result.push(`${space}  ${str}: ${files[`file${keyss.this}`][str]}`);
   } else {
-    result.push(`${space}${sing.this} ${str}: ${files['file' + keyss.this][str]}`);
-    result.push(`${space}${sing.other} ${str}: ${files['file' + keyss.other][str]}`);
+    result.push(`${space}${sing.this} ${str}: ${files[`file${keyss.this}`][str]}`);
+    result.push(`${space}${sing.other} ${str}: ${files[`file${keyss.other}`][str]}`);
   }
 
   return result;
@@ -40,26 +39,27 @@ const checkStr = (data) => {
   const space = getSpaces(deep);
 
   if (!keys[keyss.other].includes(str)) {
-    result.push(`${space}${sing.this} ${str}: ${files['file' + keyss.this][str]}`);
+    result.push(`${space}${sing.this} ${str}: ${files[`file${keyss.this}`][str]}`);
   } else {
     checkSameKey(data);
   }
 
   return result;
-}
+};
 
 const checkSameObj = (data) => {
-  const [keys, files, deep, result, sing, keyss, str] = data;
+  const [, files, deep, result,,, str] = data;
   const space = getSpaces(deep);
 
   const filesN = {
-    file0: files['file' + 0][str],
-    file1: files['file' + 1][str]
+    file0: files[`file${0}`][str],
+    file1: files[`file${1}`][str],
   };
 
   const keysN = [getKeys(filesN.file0), getKeys(filesN.file1)];
 
   result.push(`${space}  ${str}: {`);
+  // eslint-disable-next-line no-use-before-define
   getDiff(keysN, filesN, deep + 1, result);
   result.push(`${space}  }`);
 
@@ -72,13 +72,13 @@ const checkObj = (data) => {
 
   if (!keys[keyss.other].includes(str)) {
     result.push(`${space}${sing.this} ${str}: {`);
-    getAllFromObj(files['file' + keyss.this][str], result, deep + 1);
+    getAllFromObj(files[`file${keyss.this}`][str], result, deep + 1);
     result.push(`${space}  }`);
-  } else if (!_.isObject(files['file' + keyss.other][str])) {
+  } else if (!_.isObject(files[`file${keyss.other}`][str])) {
     result.push(`${space}${sing.this} ${str}: {`);
-    getAllFromObj(files['file' + keyss.this][str], result, deep + 1);
+    getAllFromObj(files[`file${keyss.this}`][str], result, deep + 1);
     result.push(`${space}  }`);
-    result.push(`${space}${sing.other} ${str}: ${files['file' + keyss.other][str]}`);
+    result.push(`${space}${sing.other} ${str}: ${files[`file${keyss.other}`][str]}`);
   } else {
     checkSameObj(data);
   }
@@ -89,20 +89,19 @@ const checkObj = (data) => {
 const getDiff = (keys, files, deep, result) => {
   const sortedKeys = _.sortedUniq(keys[0].concat(keys[1]).sort());
 
-  for(const str of sortedKeys) {
+  for (const str of sortedKeys) {
     const keyss = {
       this: keys[0].includes(str) ? 0 : 1,
-      other: keys[0].includes(str) ? 1 : 0
+      other: keys[0].includes(str) ? 1 : 0,
     };
     const sing = {
       this: keys[0].includes(str) ? '-' : '+',
-      other: keys[0].includes(str) ? '+' : '-'
+      other: keys[0].includes(str) ? '+' : '-',
     };
 
     const data = [keys, files, deep, result, sing, keyss, str];
 
-
-    if (_.isObject(files['file' + keyss.this][str])) {
+    if (_.isObject(files[`file${keyss.this}`][str])) {
       checkObj(data);
     } else {
       checkStr(data);

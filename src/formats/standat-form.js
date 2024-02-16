@@ -1,14 +1,11 @@
-
-import getDiff from "../function/gendiff-src.js";
+import getDiff from '../function/gendiff-src - Copy.js';
 
 const genDiff = (keys, files) => {
-  const result = ['{'];
+  const result = [];
 
   getDiff(keys, files, 1, result);
 
-  result.push('}');
-
-  return result.join('\n');
+  return result;
 };
 
 export default genDiff;

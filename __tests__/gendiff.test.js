@@ -71,26 +71,26 @@ Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
-test('work1', () => {
+test('work0', () => {
   expect(getWithFunction('files/json/fileh1.json', 'files/json/fileh2.json', genDiffS)).toBe(result);
 });
 
-test('work2', () => {
+test('work1', () => {
   expect(getWithFunction('files/yaml/file1.yaml', 'files/json/file2.json', genDiffS)).toBe(result2);
 });
 
-test('work3', () => {
+test('work2', () => {
   expect(getWithFunction('files/json/fileh1.json', 'files/json/fileh2.json', genDiffP)).toBe(result3);
 });
 
-test('file1', () => {
+test('fail0', () => {
   expect(getWithFunction('', genDiffS)).toBeUndefined();
 });
 
-test('file2', () => {
+test('fail1', () => {
   expect(getWithFunction('files/json/file1.json', 'files/json/file2.json')).toBeUndefined();
 });
 
-test('file3', () => {
+test('fail2', () => {
   expect(getWithFunction('files/json/file1.json', '', genDiffP)).toBeUndefined();
 });

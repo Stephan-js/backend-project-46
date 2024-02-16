@@ -1,10 +1,9 @@
-
-import getDiff from "../function/gendiff-src.js";
+import getDiff from '../function/gendiff-src.js';
 
 const findVal = (diff, i, rat) => {
-  let otherStr = undefined;
-  let otherVal = undefined;
-  let good = undefined;
+  let otherStr;
+  let otherVal;
+  let good;
 
   if (rat) {
     otherStr = diff[i + 1];
@@ -39,9 +38,9 @@ const findVal = (diff, i, rat) => {
         break;
       }
     }
-    
+
     if (otherStr) {
-      otherVal = otherStr.split(':')[1];
+      [, otherVal] = otherStr.split(':');
       if (otherVal.trim() === '{') {
         otherVal = '[complex value]';
       }
@@ -52,7 +51,7 @@ const findVal = (diff, i, rat) => {
 };
 
 const checkValue = (val) => {
-  let rVal = undefined;
+  let rVal;
   if (val !== undefined) {
     rVal = val.trim();
   }
@@ -71,24 +70,24 @@ const checkValue = (val) => {
       return NaN;
     default:
       return `'${rVal}'`;
-  };
+  }
 };
 
-
 const findResult = (diff) => {
-  let direction = [];
+  const direction = [];
   const result = [];
   for (let i = 0; i < diff.length; i += 1) {
     const str = diff[i];
-    let [backStr, backVal] = findVal(diff, i, false);
-    const [forwStr, forwVal] = findVal(diff, i, true);
+    let [, backVal] = findVal(diff, i, false);
+    const [backStr] = findVal(diff, i, false);
+    const [forwStr] = findVal(diff, i, true);
     let firstVal = str.split(':')[0];
     if (firstVal.startsWith('+') || firstVal.startsWith('-')) {
       firstVal = firstVal.slice(2);
     }
     let val = str.split(':')[1];
     if (val === ' {') {
-      val = `[complex value]`;
+      val = '[complex value]';
     }
     if ((str.startsWith('+') || str.startsWith('-')) && val === '[complex value]') {
       direction.push('');
