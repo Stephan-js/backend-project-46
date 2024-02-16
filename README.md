@@ -168,7 +168,7 @@ node ./src/gendiff-cmd.js --format json file0.json file1.json
 
 Would produce the following JSON output:
 
-```json
+```
 {
   add: [ { name: 'verbose', value: 'true', direction: 'verbose' } ],
   update: [
