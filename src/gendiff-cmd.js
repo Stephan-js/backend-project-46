@@ -1,4 +1,5 @@
 import { Command } from 'commander';
+import genDiffJ from './formats/json-form.js';
 import genDiffP from './formats/plain-form.js';
 import genDiffS from './formats/standat-form.js';
 import getWithFunction from './index.js';
@@ -15,6 +16,8 @@ program
   .action((file1, file2, options) => {
     if (options.format === 'plain') {
       console.log(getWithFunction(file1, file2, genDiffP));
+    } else if (options.format === 'json') {
+      console.log(getWithFunction(file1, file2, genDiffJ));
     } else {
       console.log(getWithFunction(file1, file2, genDiffS));
     }

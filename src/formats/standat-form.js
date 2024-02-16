@@ -1,4 +1,4 @@
-import getDiff from '../function/gendiff-src - Copy.js';
+import getDiff from '../function/gendiff-src.js';
 
 const genDiff = (keys, files) => {
   const result = [];
