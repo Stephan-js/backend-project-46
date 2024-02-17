@@ -1,9 +1,8 @@
+import { test, expect } from '@jest/globals';
 
-import { test, expect } from "@jest/globals";
-
-import getWithFunction from "../src";
-import genDiffS from "../src/formats/standat-form.js";
-import genDiffP from "../src/formats/plain-form.js";
+import getWithFunction from '../src/index.js';
+import genDiffS from '../src/formats/standat-form.js';
+import genDiffP from '../src/formats/plain-form.js';
 
 const result = `{
     common: {
