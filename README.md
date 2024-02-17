@@ -68,7 +68,7 @@ If you're using Ubuntu, you can follow these manual installation steps:
      ```bash
      make install
      ```
-   ### Vidio Guid
+   ### Vidio Guide
 
    [![asciicast](https://asciinema.org/a/641195.svg)](https://asciinema.org/a/641195)
 
