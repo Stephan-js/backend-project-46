@@ -1,4 +1,5 @@
-import { readAndParseFile, getKeys } from './functions.js';
+import { getKeys } from './getdiff/functions/functions.js';
+import readAndParseFile from './readAndParse.js';
 
 const getWithFunction = (wayFile0, wayFile1, functions) => {
   const files = {

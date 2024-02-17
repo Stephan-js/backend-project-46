@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import checkStr from './check-str.js';
-import checkObj from './check-obj.js';
+import checkStr from '../functions/check-str.js';
+// eslint-disable-next-line import/no-cycle
+import checkObj from '../functions/check-obj.js';
 
 const getDiff = (keys, files, deep, result) => {
   const sortedKeys = _.sortedUniq(keys[0].concat(keys[1]).sort());

@@ -1,4 +1,4 @@
-import getDiff from '../function/gendiff-src.js';
+import getDiff from '../../getdiff/src/gendiff-src.js';
 
 const genDiff = (keys, files) => {
   const result = ['{'];

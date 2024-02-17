@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { getSpaces } from '../functions.js';
+import { getSpaces } from './functions.js';
 // eslint-disable-next-line import/no-cycle
 import checkSameObj from './check-same-obj.js';
 

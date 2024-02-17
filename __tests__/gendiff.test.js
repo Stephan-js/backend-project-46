@@ -1,7 +1,9 @@
 import { test, expect } from '@jest/globals';
 import getWithFunction from '../src/index.js';
-import genDiffS from '../src/formats/standat-form.js';
-import genDiffP from '../src/formats/plain-form.js';
+// eslint-disable-next-line no-unused-vars
+import genDiffJ from '../src/formats/src/json-form.js';
+import genDiffP from '../src/formats/src/plain-form.js';
+import genDiffS from '../src/formats/src/standat-form.js';
 
 const result = `{
     common: {

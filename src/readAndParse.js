@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
@@ -26,7 +25,4 @@ const readAndParseFile = (files) => {
   }
 };
 
-const getSpaces = (deep) => ' '.repeat(deep * 4 - 2);
-const getKeys = (file) => _.keys(file).sort();
-
-export { readAndParseFile, getSpaces, getKeys };
+export default readAndParseFile;

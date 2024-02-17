@@ -1,5 +1,5 @@
-import getDiff from '../function/gendiff-src.js';
-import getRes from './gen-res.js';
+import getDiff from '../../getdiff/src/gendiff-src.js';
+import getRes from '../functions/gen-res.js';
 
 const genDiff = (keys, files) => {
   const diff = [];

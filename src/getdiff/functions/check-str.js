@@ -1,4 +1,4 @@
-import { getSpaces } from '../functions.js';
+import { getSpaces } from './functions.js';
 
 const checkSameKey = (data) => {
   const [, files, deep, result, sing, keyss, str] = data;

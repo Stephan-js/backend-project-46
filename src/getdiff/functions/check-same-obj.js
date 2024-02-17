@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import getDiff from './gendiff-src.js';
-import { getSpaces, getKeys } from '../functions.js';
+import getDiff from '../src/gendiff-src.js';
+import { getSpaces, getKeys } from './functions.js';
 
 const checkSameObj = (data) => {
   const [, files, deep, result,,, str] = data;
