@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Stepan19999993/frontend-project-46#readme",
   "dependencies": {
+    "@jest/globals": "^29.7.0",
     "commander": "^11.1.0",
     "ini": "^4.1.1",
     "js-yaml": "^4.1.0",

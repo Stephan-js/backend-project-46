@@ -1,5 +1,4 @@
 import { test, expect } from '@jest/globals';
-
 import getWithFunction from '../src/index.js';
 import genDiffS from '../src/formats/standat-form.js';
 import genDiffP from '../src/formats/plain-form.js';
@@ -51,7 +50,7 @@ const result = `{
 
 const result2 = `{
   - follow: false
-    host: hexlet.io
+    host: github.com
   - proxy: 123.234.53.22
   - timeout: 50
   + timeout: 20
