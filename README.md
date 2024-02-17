@@ -189,7 +189,7 @@ Would produce the following JSON output:
 }
 ```
 
-## Available formats
+## Available files format
 
 - JSON
 - YAML
