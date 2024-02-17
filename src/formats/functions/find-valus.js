@@ -1,4 +1,4 @@
-const findVal = (diff, i, rat) => {
+const getParm = (diff, i, rat) => {
   let n;
   let otherStr;
   let otherVal;
@@ -16,11 +16,20 @@ const findVal = (diff, i, rat) => {
       good = otherStr.startsWith('-');
     }
   }
+
   if (rat) {
     n = i + 1;
   } else {
     n = i - 1;
   }
+
+  return [n, otherStr, otherVal, good];
+};
+
+const findVal = (diff, i, rat) => {
+  const param = getParm(diff, i, rat);
+  let [n, otherStr, otherVal] = param;
+  const [,,, good] = param;
 
   while (!good) {
     if (rat) {
