@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { getSpaces } from './functions.js';
+import { getSpaces, addToRes } from './functions.js';
 // eslint-disable-next-line import/no-cycle
 import checkSameObj from './check-same-obj.js';
 
@@ -32,7 +32,7 @@ const checkObj = (data) => {
     result.push(`${space}${sing.this} ${str}: {`);
     getAllFromObj(files[`file${keyss.this}`][str], result, deep + 1);
     result.push(`${space}  }`);
-    result.push(`${space}${sing.other} ${str}: ${files[`file${keyss.other}`][str]}`);
+    addToRes(result, space, sing.other, str, files, keyss.other);
   } else {
     checkSameObj(data);
   }
