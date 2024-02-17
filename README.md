@@ -68,6 +68,9 @@ If you're using Ubuntu, you can follow these manual installation steps:
      ```bash
      make install
      ```
+   ### Vidio Guide
+
+   [![asciicast](https://asciinema.org/a/641195.svg)](https://asciinema.org/a/641195)
 
 ## Usage
 
@@ -186,7 +189,7 @@ Would produce the following JSON output:
 }
 ```
 
-## Available formats
+## Available files format
 
 - JSON
 - YAML
