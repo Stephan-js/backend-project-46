@@ -204,6 +204,10 @@ Would produce the following JSON output:
 
 [![Actions Status](https://github.com/Stepan19999993/frontend-project-46/actions/workflows/support-check.yml/badge.svg)](https://github.com/Stepan19999993/frontend-project-46/actions)
 
+### Maintainability
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/539932a003647964e843/maintainability)](https://codeclimate.com/github/Stepan19999993/frontend-project-46/maintainability)
+
 ## License
 
 ```
