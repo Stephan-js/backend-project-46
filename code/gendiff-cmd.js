@@ -1,7 +1,7 @@
 import { Command } from 'commander';
-import genDiffJ from './formats/json-form.js';
-import genDiffP from './formats/plain-form.js';
-import genDiffS from './formats/standat-form.js';
+import genDiffP from './formats/src/plain-form.js';
+import genDiffJ from './formats/src/json-form.js';
+import genDiffS from './formats/src/standat-form.js';
 import getWithFunction from './index.js';
 
 const program = new Command();
