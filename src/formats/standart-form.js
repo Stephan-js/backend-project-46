@@ -1,6 +1,6 @@
-import getDiff from '../../getdiff/src/gendiff-src.js';
+import getDiff from '../getdiff/getdiff-src.js';
 
-const genDiff = (keys, files) => {
+const genDiffS = (keys, files) => {
   const result = ['{'];
 
   getDiff(keys, files, 1, result);
@@ -10,4 +10,4 @@ const genDiff = (keys, files) => {
   return result.join('\n');
 };
 
-export default genDiff;
+export default genDiffS;

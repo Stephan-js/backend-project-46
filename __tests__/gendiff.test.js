@@ -1,9 +1,5 @@
 import { test, expect } from '@jest/globals';
-import getWithFunction from '../code/index.js';
-// eslint-disable-next-line no-unused-vars
-import genDiffJ from '../code/formats/src/json-form.js';
-import genDiffP from '../code/formats/src/plain-form.js';
-import genDiffS from '../code/formats/src/standat-form.js';
+import genDiff from '../src/index.js';
 
 const result = `{
     common: {
@@ -72,25 +68,21 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
 test('work0', () => {
-  expect(getWithFunction('files/json/fileh1.json', 'files/json/fileh2.json', genDiffS)).toBe(result);
+  expect(genDiff('files/json/fileh1.json', 'files/json/fileh2.json', 'standart')).toBe(result);
 });
 
 test('work1', () => {
-  expect(getWithFunction('files/yaml/file1.yaml', 'files/json/file2.json', genDiffS)).toBe(result2);
+  expect(genDiff('files/yaml/file1.yaml', 'files/json/file2.json', 'standart')).toBe(result2);
 });
 
 test('work2', () => {
-  expect(getWithFunction('files/json/fileh1.json', 'files/json/fileh2.json', genDiffP)).toBe(result3);
+  expect(genDiff('files/json/fileh1.json', 'files/json/fileh2.json', 'plain')).toBe(result3);
 });
 
 test('fail0', () => {
-  expect(getWithFunction('', genDiffS)).toBeUndefined();
+  expect(genDiff('')).toBeUndefined();
 });
 
 test('fail1', () => {
-  expect(getWithFunction('files/json/file1.json', 'files/json/file2.json')).toBeUndefined();
-});
-
-test('fail2', () => {
-  expect(getWithFunction('files/json/file1.json', '', genDiffP)).toBeUndefined();
+  expect(genDiff('files/json/file1.json', '')).toBeUndefined();
 });

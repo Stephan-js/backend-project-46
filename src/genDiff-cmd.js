@@ -1,8 +1,5 @@
 import { Command } from 'commander';
-import genDiffP from './formats/src/plain-form.js';
-import genDiffJ from './formats/src/json-form.js';
-import genDiffS from './formats/src/standat-form.js';
-import getWithFunction from './index.js';
+import genDiff from './index.js';
 
 const program = new Command();
 
@@ -15,12 +12,12 @@ program
   .option('-f, --format <type>', 'output format')
   .action((file1, file2, options) => {
     if (options.format === 'plain') {
-      console.log(getWithFunction(file1, file2, genDiffP));
+      console.log(genDiff(file1, file2, 'plain'));
     } else if (options.format === 'json') {
-      console.log(getWithFunction(file1, file2, genDiffJ));
+      console.log(genDiff(file1, file2, 'json'));
     } else {
-      console.log(getWithFunction(file1, file2, genDiffS));
+      console.log(genDiff(file1, file2, 'standart'));
     }
   });
 
-program.parse(process.argv);
+program.parse();

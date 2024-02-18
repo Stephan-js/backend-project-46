@@ -1,7 +1,25 @@
+/* eslint-disable import/no-cycle */
 import _ from 'lodash';
-import { getSpaces, addToRes } from './functions.js';
-// eslint-disable-next-line import/no-cycle
-import checkSameObj from './check-same-obj.js';
+import { getSpaces, getKeys, addToRes } from '../functions.js';
+import getDiff from './getdiff-src.js';
+
+const checkSameObj = (data) => {
+  const [, files, deep, result,,, str] = data;
+  const space = getSpaces(deep);
+
+  const filesN = {
+    file0: files[`file${0}`][str],
+    file1: files[`file${1}`][str],
+  };
+
+  const keysN = [getKeys(filesN.file0), getKeys(filesN.file1)];
+
+  result.push(`${space}  ${str}: {`);
+  getDiff(keysN, filesN, deep + 1, result);
+  result.push(`${space}  }`);
+
+  return result;
+};
 
 const getAllFromObj = (obj, result, deep) => {
   const space = getSpaces(deep);

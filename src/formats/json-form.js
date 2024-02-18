@@ -1,7 +1,7 @@
-import getDiff from '../../getdiff/src/gendiff-src.js';
-import getRes from '../functions/gen-res.js';
+import getDiff from '../getdiff/getdiff-src.js';
+import getRes from './gen-res.js';
 
-const genDiff = (keys, files) => {
+const genDiffJ = (keys, files) => {
   const diff = [];
   getDiff(keys, files, 1, diff);
   const res = diff.map((val) => val.trim());
@@ -26,4 +26,4 @@ const genDiff = (keys, files) => {
   return getRes(res, { add: [], update: [], deleted: [] }, sett);
 };
 
-export default genDiff;
+export default genDiffJ;

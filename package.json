@@ -1,8 +1,7 @@
 {
   "name": "@hexlet/code",
-  "version": "0.3.5",
-  "description": "None",
-  "main": "code/gendiff-cmd.js",
+  "version": "0.4.0",
+  "main": "code/index.js",
   "type": "module",
   "engines": {
     "node": ">=14"
@@ -15,7 +14,7 @@
     "url": "git+https://github.com/Stepan19999993/frontend-project-46.git"
   },
   "author": "Hacer",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Stepan19999993/frontend-project-46/issues"
   },
