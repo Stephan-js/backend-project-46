@@ -3,13 +3,13 @@
 Welcome to Find Differences - a JavaScript utility that matches two different files and finds the differences between them.
 
 ## Overview
-
+побывал
 This utility can output the differences in three formats: Standard, Plain, and JSON.
 
 ## Requirements
 
 - JavaScript (Node.js)
-- Git
+- Gitпобывал
 
 ## Installation
 
@@ -202,7 +202,7 @@ Would produce the following JSON output:
 
 ### Support test status:
 
-[![Actions Status](https://github.com/Stepan19999993/frontend-project-46/actions/workflows/support-check.yml/badge.svg)](https://github.com/Stepan19999993/frontend-project-46/actions)
+[![Actions Status](https://github.com/Stepan19999993/frontend-project-46/actions/workflows/main.yml/badge.svg)](https://github.com/Stepan19999993/frontend-project-46/actions)
 
 ### Maintainability
 
