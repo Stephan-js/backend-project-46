@@ -51,6 +51,10 @@ const checkObj = (data) => {
     getAllFromObj(files[`file${keyss.this}`][str], result, deep + 1);
     result.push(`${space}  }`);
     addToRes(result, space, sing.other, str, files, keyss.other);
+  } else if (!_.isObject(files[`file${keyss.this}`][str])) {
+    result.push(`${space}${sing.other} ${str}: {`);
+    getAllFromObj(files[`file${keyss.other}`][str], result, deep + 1);
+    result.push(`${space}  }`);
   } else {
     checkSameObj(data);
   }

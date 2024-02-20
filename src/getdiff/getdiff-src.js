@@ -18,7 +18,7 @@ const getDiff = (keys, files, deep, result) => {
 
     const data = [keys, files, deep, result, sing, keyss, str];
 
-    if (_.isObject(files[`file${keyss.this}`][str])) {
+    if (_.isObject(files[`file${keyss.this}`][str]) || _.isObject(files[`file${keyss.other}`][str])) {
       checkObj(data);
     } else {
       checkStr(data);
