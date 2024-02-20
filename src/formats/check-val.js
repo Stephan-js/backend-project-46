@@ -1,9 +1,9 @@
 const checkNumb = (val) => {
-  if (Number(val).isNaN()) {
+  if (!Number.isNaN(Number(val)) && val !== '') {
     return Number(val);
   }
 
-  return val;
+  return `'${val}'`;
 };
 
 const checkValue = (val) => {
