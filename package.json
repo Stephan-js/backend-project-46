@@ -3,6 +3,9 @@
   "version": "0.4.0",
   "main": "/src/index.js",
   "type": "module",
+  "bin": {
+    "gendiff": "./bin/gendiff.js"
+  },
   "engines": {
     "node": ">=14"
   },
