@@ -1,3 +1,11 @@
+const checkNumb = (val) => {
+  if (Number(val).isNaN()) {
+    return Number(val);
+  }
+
+  return val;
+};
+
 const checkValue = (val) => {
   let rVal;
   if (val !== undefined) {
@@ -17,7 +25,7 @@ const checkValue = (val) => {
     case 'NaN':
       return NaN;
     default:
-      return `'${rVal}'`;
+      return checkNumb(rVal);
   }
 };
 
