@@ -5,7 +5,7 @@ const genDiffJ = (keys, files) => {
   const diff = [];
   getDiff(keys, files, 1, diff);
   const res = diff.map((val) => val.trim());
-  // Trim all key (delete all other spaces);
+  // Map all key (delete all other spaces);
   const sett = {
     add: (rDirection, firstVal, val, result) => result.add.push({
       name: firstVal,
@@ -24,9 +24,9 @@ const genDiffJ = (keys, files) => {
       direction: `${rDirection}${firstVal}`,
     }),
   };
-  // Give rulle how add params
+  // Give rule how add params
 
-  return getRes(res, { add: [], update: [], deleted: [] }, sett);
+  return JSON.stringify(getRes(res, { add: [], update: [], deleted: [] }, sett));
   // Return result
 };
 
