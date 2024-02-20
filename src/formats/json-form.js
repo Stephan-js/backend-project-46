@@ -5,6 +5,7 @@ const genDiffJ = (keys, files) => {
   const diff = [];
   getDiff(keys, files, 1, diff);
   const res = diff.map((val) => val.trim());
+  // Trim all key (delete all other spaces);
   const sett = {
     add: (rDirection, firstVal, val, result) => result.add.push({
       name: firstVal,
@@ -15,6 +16,7 @@ const genDiffJ = (keys, files) => {
       name: firstVal,
       oldValue: String(backVal).replaceAll("'", ''),
       newValue: String(val).replaceAll("'", ''),
+      // Use class String to 'ReplaceAll' metod
       direction: `${rDirection}${firstVal}`,
     }),
     delete: (rDirection, firstVal, result) => result.deleted.push({
@@ -22,8 +24,10 @@ const genDiffJ = (keys, files) => {
       direction: `${rDirection}${firstVal}`,
     }),
   };
+  // Give rulle how add params
 
   return getRes(res, { add: [], update: [], deleted: [] }, sett);
+  // Return result
 };
 
 export default genDiffJ;
