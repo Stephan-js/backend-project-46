@@ -52,6 +52,7 @@ const checkObj = (data) => {
     result.push(`${space}  }`);
     addToRes(result, space, sing.other, str, files, keyss.other);
   } else if (!_.isObject(files[`file${keyss.this}`][str])) {
+    addToRes(result, space, sing.this, str, files, keyss.this);
     result.push(`${space}${sing.other} ${str}: {`);
     getAllFromObj(files[`file${keyss.other}`][str], result, deep + 1);
     result.push(`${space}  }`);
