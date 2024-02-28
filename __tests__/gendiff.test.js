@@ -68,15 +68,15 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
 test('work0', () => {
-  expect(genDiff('files/json/fileh1.json', 'files/json/fileh2.json', 'standart')).toBe(result);
+  expect(genDiff('fixtures/json/fileh1.json', 'fixtures/json/fileh2.json', 'standart')).toBe(result);
 });
 
 test('work1', () => {
-  expect(genDiff('files/yaml/file1.yaml', 'files/json/file2.json', 'standart')).toBe(result2);
+  expect(genDiff('fixtures/yaml/file1.yaml', 'fixtures/json/file2.json', 'standart')).toBe(result2);
 });
 
 test('work2', () => {
-  expect(genDiff('files/json/fileh1.json', 'files/json/fileh2.json', 'plain')).toBe(result3);
+  expect(genDiff('fixtures/json/fileh1.json', 'fixtures/json/fileh2.json', 'plain')).toBe(result3);
 });
 
 test('fail0', () => {

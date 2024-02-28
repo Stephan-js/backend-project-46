@@ -202,7 +202,7 @@ Would produce the following JSON output:
 
 ### Support test status:
 
-[![Actions Status](https://github.com/Stepan19999993/frontend-project-46/actions/workflows/main.yml/badge.svg)](https://github.com/Stepan19999993/frontend-project-46/actions)
+[![Actions Status](https://github.com/Stepan19999993/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Stepan19999993/frontend-project-46/actions)
 
 ### Maintainability
 
