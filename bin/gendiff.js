@@ -12,14 +12,6 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .option('-f, --format <type>', 'output format')
-  .action((file1, file2, options) => {
-    if (options.format === 'plain') {
-      console.log(genDiff(file1, file2, 'plain'));
-    } else if (options.format === 'json') {
-      console.log(genDiff(file1, file2, 'json'));
-    } else {
-      console.log(genDiff(file1, file2, 'standart'));
-    }
-  });
+  .action((file1, file2, options) => { console.log(genDiff(file1, file2, options.format)); });
 
 program.parse();
