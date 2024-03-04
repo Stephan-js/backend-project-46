@@ -3,49 +3,32 @@
 Welcome to Find Differences - a JavaScript utility that matches two different files and finds the differences between them.
 
 ## Overview
-побывал
 This utility can output the differences in three formats: Standard, Plain, and JSON.
 
 ## Requirements
 
 - JavaScript (Node.js)
-- Gitпобывал
+- Git
 
 ## Installation
 
-### Chocolatey Installation (Windows)
+### Modul Installation
 
-If you're using Windows, you can use Chocolatey to simplify the installation process.
+If you're using Ubuntu or Windows, you can follow these manual installation steps:
 
-1. **Install Chocolatey:**
-   - Open PowerShell as an administrator.
-   - Run the following command to install Chocolatey:
-     ```powershell
-     Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-     ```
-   - Install GNU Make:
-     ```powershell
-     choco install make
-     ```
-
-2. **Restart PowerShell:**
-   - Close and reopen PowerShell to make sure it recognizes the newly installed Chocolatey.
-
-3. **Copy Repository to Your PC:**
-   - Open a PowerShell window.
-   - Run the following command to clone the repository to your local machine:
+1. **Add Module to Your Project:**
+   - Open a terminal.
+   - Run the following command to clone the Module to your project:
      ```bash
-     git clone https://github.com/Stepan19999993/frontend-project-46
-     ```
-   - Change into the project directory:
-     ```bash
-     cd frontend-project-46
+     npm install https://github.com/Stepan19999993/frontend-project-46
      ```
 
-4. **Install Project Dependencies:**
-   - Run the following command to install the project dependencies:
-     ```bash
-     make install
+2. **Import module:**
+   - Import module in path were it needs:
+     ```js
+     import findDiff from '@hexlet/code';
+     // or
+     require findDiff = '@hexlet/code';
      ```
 
 ### Manual Installation (Ubuntu / Mac)
