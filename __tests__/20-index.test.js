@@ -67,6 +67,8 @@ Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
+const fail = "Sorry, program can't find files.";
+
 test('work0', () => {
   expect(genDiff('fixtures/json/fileh1.json', 'fixtures/json/fileh2.json', 'standart')).toBe(result);
 });
@@ -80,9 +82,9 @@ test('work2', () => {
 });
 
 test('fail0', () => {
-  expect(genDiff('')).toBeUndefined();
+  expect(genDiff('')).toBe(fail);
 });
 
 test('fail1', () => {
-  expect(genDiff('files/json/file1.json', '')).toBeUndefined();
+  expect(genDiff('files/json/file1.json', '')).toBe(fail);
 });
