@@ -8,7 +8,6 @@ This utility can output the differences in three formats: Standard, Plain, and J
 ## Requirements
 
 - JavaScript (Node.js)
-- Git
 
 ## Installation
 
@@ -30,23 +29,7 @@ If you're using Ubuntu or Windows, you can follow these manual installation step
      // or
      require findDiff = '@hexlet/code';
      ```
-
-### Manual Installation (Ubuntu / Mac)
-
-If you're using Ubuntu, you can follow these manual installation steps:
-
-1. **Copy Repository to Your PC:**
-   - Open a terminal window.
-   - Run the following command to clone the repository to your local machine:
-     ```bash
-     npm install https://github.com/Stepan19999993/frontend-project-46
-     ```
-
-2. **Install Project Dependencies:**
-   - Run the following command:
-     ```bash
-     gendiff
-     ```
+     
    ### Vidio Guide
 
    [![asciicast](https://asciinema.org/a/641195.svg)](https://asciinema.org/a/641195)
