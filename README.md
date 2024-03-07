@@ -39,17 +39,13 @@ If you're using Ubuntu, you can follow these manual installation steps:
    - Open a terminal window.
    - Run the following command to clone the repository to your local machine:
      ```bash
-     git clone https://github.com/Stepan19999993/frontend-project-46
-     ```
-   - Change into the project directory:
-     ```bash
-     frontend-project-46
+     npm install https://github.com/Stepan19999993/frontend-project-46
      ```
 
 2. **Install Project Dependencies:**
-   - Run the following command to install the project dependencies:
+   - Run the following command:
      ```bash
-     make install
+     gendiff
      ```
    ### Vidio Guide
 
@@ -62,7 +58,7 @@ If you're using Ubuntu, you can follow these manual installation steps:
 To use the utility in standard format, you can run:
 
 ```bash
-node ./src/gendiff-cmd.js file0.json file1.json
+gendiff file0.json file1.json
 ```
 
 ### Plain Format
@@ -70,7 +66,7 @@ node ./src/gendiff-cmd.js file0.json file1.json
 To use the utility in plain format, you can run:
 
 ```bash
-node ./src/gendiff-cmd.js --format plain file0.json file1.json
+gendiff --format plain file0.json file1.json
 ```
 
 ### JSON Format
@@ -78,7 +74,7 @@ node ./src/gendiff-cmd.js --format plain file0.json file1.json
 To use the utility in JSON format, you can run:
 
 ```bash
-node ./src/gendiff-cmd.js --format json file0.json file1.json
+gendiff --format json file0.json file1.json
 ```
 
 ## Example
@@ -111,7 +107,7 @@ Suppose we have two files:
 Running the utility with these files:
 
 ```bash
-node ./src/gendiff-cmd.js file0.json file1.json
+gendiff file0.json file1.json
 ```
 
 Would produce the following Standart output:
@@ -132,7 +128,7 @@ Would produce the following Standart output:
 Running the utility with these files:
 
 ```bash
-node ./src/gendiff-cmd.js --format plain file0.json file1.json
+gendiff --format plain file0.json file1.json
 ```
 
 Would produce the following Plain output:
@@ -149,7 +145,7 @@ Property 'verbose' was added with value: true
 Running the utility with these files:
 
 ```bash
-node ./src/gendiff-cmd.js --format json file0.json file1.json
+gendiff --format json file0.json file1.json
 ```
 
 Would produce the following JSON output:
