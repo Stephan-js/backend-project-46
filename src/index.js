@@ -15,7 +15,8 @@ const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
     absoluteFilepath0 = fs.readFileSync(path.resolve(wayFile0));
     absoluteFilepath1 = fs.readFileSync(path.resolve(wayFile1));
   } catch {
-    return undefined;
+    // We need for if user type wrong way
+    return "Sorry, program can't find files.";
   }
 
   const files = {
