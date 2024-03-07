@@ -8,7 +8,6 @@ This utility can output the differences in three formats: Standard, Plain, and J
 ## Requirements
 
 - JavaScript (Node.js)
-- Git
 
 ## Installation
 
