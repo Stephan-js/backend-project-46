@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import getSpaces from '../getSpaces.js';
 
+const getSpaces = (deep) => ' '.repeat(deep * 4 - 2);
 const sign = {
   add: '+',
   deleted: '-',
