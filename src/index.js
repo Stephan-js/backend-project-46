@@ -1,10 +1,10 @@
 import path from 'path';
 import fs from 'fs';
-import genDiffP from './formats/plain-form.js';
-import genDiffJ from './formats/json-form.js';
+import getDiff from './getdiff-src.js';
+// import genDiffP from './formats/plain-form.js';
+// import genDiffJ from './formats/json-form.js';
 import genDiffS from './formats/standart-form.js';
-import readAndParseFile from './readAndParse.js';
-import getWithFunction from './getWithFunc.js';
+import readAndParseFile from './getPersedData.js';
 
 const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
   let absoluteFilepath0;
@@ -15,24 +15,22 @@ const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
     absoluteFilepath0 = fs.readFileSync(path.resolve(wayFile0));
     absoluteFilepath1 = fs.readFileSync(path.resolve(wayFile1));
   } catch {
-    // We need for if user type wrong way
+    // If user type wrong path
     return "Sorry, program can't find files.";
   }
 
-  const files = {
-    // I think we needn't make const for each thing
-    file0: readAndParseFile(absoluteFilepath0, path.extname(wayFile0)),
-    file1: readAndParseFile(absoluteFilepath1, path.extname(wayFile1)),
-  };
+  const obj0 = readAndParseFile(absoluteFilepath0, path.extname(wayFile0));
+  const obj1 = readAndParseFile(absoluteFilepath1, path.extname(wayFile1));
+  const diff = getDiff(obj0, obj1);
 
   if (format === 'json') {
-    return getWithFunction(files, genDiffJ);
+    // return genDiffJ(diff);
   }
   if (format === 'plain') {
-    return getWithFunction(files, genDiffP);
+    // return genDiffP(diff);
   }
 
-  return getWithFunction(files, genDiffS);
+  return diff[0].value[7];
 };
 
 export default genDiff;
