@@ -6,6 +6,23 @@ const sign = {
   deleted: '-',
   same: ' ',
 };
+const getAllFromObj = (obj, deep) => {
+  const res = [];
+  const spaces = getSpaces(deep);
+  const keys = _.keys(obj).sort();
+
+  for (const key of keys) {
+    if (!_.isObject(obj[key])) {
+      res.push(`${spaces}  ${key}: ${obj[key]}`);
+    } else {
+      res.push(`${spaces}  ${key}: {`);
+      res.push(getAllFromObj(obj[key], deep + 1));
+      res.push(`${spaces}  }`);
+    }
+  }
+
+  return res.join('\n');
+};
 
 const genDiffS = (diff, deep = 1) => {
   const res = [];
@@ -17,13 +34,22 @@ const genDiffS = (diff, deep = 1) => {
       const val = genDiffS(dif.value, deep + 1);
       res.push(`${spaces}${sign[dif.status]} ${dif.name}: {`);
       res.push(val);
-      res.push(`${spaces}}`);
+      res.push(`${spaces}  }`);
     } else {
-      console.log(dif);
+      res.push(`${spaces}${sign[dif.status]} ${dif.name}: {`);
+      res.push(getAllFromObj(dif.value, deep + 1));
+      res.push(`${spaces}  }`);
     }
   }
 
   return res.join('\n');
 };
 
-export default genDiffS;
+const giveRes = (diff) => {
+  const res = ['{'];
+  res.push(genDiffS(diff));
+  res.push('}');
+  return res.join('\n');
+};
+
+export default giveRes;

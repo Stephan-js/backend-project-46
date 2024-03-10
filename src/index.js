@@ -27,7 +27,7 @@ const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
     return JSON.stringify(diff);
   }
   if (format === 'plain') {
-    // return genDiffP(diff);
+    return 1;
   }
 
   return genDiffS(diff);
