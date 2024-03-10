@@ -1,6 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 import _ from 'lodash';
-import { getKeys } from './functions.js';
+
+// Get all keys
+const getKeys = (file0, file1) => _.uniq(_.concat(_.keys(file0), _.keys(file1))).sort();
 
 // Make custom class for result
 class Res {

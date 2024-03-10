@@ -1,11 +1,12 @@
 import _ from 'lodash';
-import { getSpaces } from '../functions.js';
+import getSpaces from '../getSpaces.js';
 
 const sign = {
   add: '+',
   deleted: '-',
   same: ' ',
 };
+
 const getAllFromObj = (obj, deep) => {
   const res = [];
   const spaces = getSpaces(deep);
