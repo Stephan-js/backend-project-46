@@ -1,8 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import getDiff from './getdiff-src.js';
-// import genDiffP from './formats/plain-form.js';
-// import genDiffJ from './formats/json-form.js';
+import genDiffP from './formats/plain-form.js';
 import genDiffS from './formats/standart-form.js';
 import readAndParseFile from './getPersedData.js';
 
@@ -27,7 +26,7 @@ const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
     return JSON.stringify(diff);
   }
   if (format === 'plain') {
-    return 1;
+    return genDiffP(diff);
   }
 
   return genDiffS(diff);

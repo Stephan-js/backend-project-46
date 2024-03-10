@@ -133,22 +133,8 @@ gendiff --format json file0.json file1.json
 
 Would produce the following JSON output:
 
-```
-{
-  add: [ { name: 'verbose', value: 'true', direction: 'verbose' } ],
-  update: [
-    {
-      name: 'timeout',
-      oldValue: '50',
-      newValue: '20',
-      direction: 'timeout'
-    }
-  ],
-  deleted: [
-    { name: 'follow', direction: 'follow' },
-    { name: 'proxy', direction: 'proxy' }
-  ]
-}
+```json
+[{"name":"follow","value":false,"status":"deleted"},{"name":"host","value":"github.com","status":"same"},{"name":"proxy","value":"123.234.53.22","status":"deleted"},{"name":"timeout","value":50,"status":"deleted"},{"name":"timeout","value":20,"status":"add"},{"name":"verbose","value":true,"status":"add"}]
 ```
 
 ## Available files format
