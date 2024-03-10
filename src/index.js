@@ -24,13 +24,13 @@ const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
   const diff = getDiff(obj0, obj1);
 
   if (format === 'json') {
-    // return genDiffJ(diff);
+    return JSON.stringify(diff);
   }
   if (format === 'plain') {
     // return genDiffP(diff);
   }
 
-  return diff[0].value[7];
+  return genDiffS(diff);
 };
 
 export default genDiff;
