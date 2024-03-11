@@ -24,14 +24,14 @@ const genDiffP = (diff, way = '') => {
     if (dif.status !== 'same') {
       if (diff[i + 1]) {
         if (dif.name !== diff[i + 1].name) {
-          // Yep 2 same part (IDK, how to fix it)
+          // Yep, 2 same part (IDK, how to fix it)
           res.push(addStr[dif.status](dif, way));
         } else {
           res.push(addStr.update(dif, diff[i + 1], way));
           i += 1;
         }
       } else {
-        // Yep 2 same part (IDK, how to fix it)
+        // Yep, 2 same part (IDK, how to fix it)
         res.push(addStr[dif.status](dif, way));
       }
     } else if (_.isObject(dif.value)) {

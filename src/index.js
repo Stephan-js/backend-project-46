@@ -20,6 +20,9 @@ const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
 
   const obj0 = readAndParseFile(absoluteFilepath0, path.extname(wayFile0));
   const obj1 = readAndParseFile(absoluteFilepath1, path.extname(wayFile1));
+  if (obj0 === undefined || obj1 === undefined) {
+    return 'Sorry, you give wrong type file.';
+  }
   const diff = getDiff(obj0, obj1);
 
   if (format === 'json') {
