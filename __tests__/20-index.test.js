@@ -70,11 +70,11 @@ Property 'group3' was added with value: [complex value]`;
 const fail = "Sorry, program can't find files.";
 
 test('work0', () => {
-  expect(genDiff('__fixtures__/json/fileh1.json', '__fixtures__/json/fileh2.json', 'standart')).toBe(result);
+  expect(genDiff('__fixtures__/json/fileh1.json', '__fixtures__/json/fileh2.json', 'standard')).toBe(result);
 });
 
 test('work1', () => {
-  expect(genDiff('__fixtures__/yaml/file1.yaml', '__fixtures__/json/file2.json', 'standart')).toBe(result2);
+  expect(genDiff('__fixtures__/yaml/file1.yaml', '__fixtures__/json/file2.json', 'standard')).toBe(result2);
 });
 
 test('work2', () => {

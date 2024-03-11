@@ -2,10 +2,17 @@ import path from 'path';
 import fs from 'fs';
 import getDiff from './getdiff-src.js';
 import genDiffP from './formats/plain-form.js';
-import genDiffS from './formats/standart-form.js';
+import genDiffS from './formats/standard-form.js';
 import readAndParseFile from './getPersedData.js';
 
-const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
+const giveRes = {
+  json: (diff) => JSON.stringify(diff),
+  plain: (diff) => genDiffP(diff),
+  standard: (diff) => genDiffS(diff),
+};
+
+// If on default will be "format = 'stylish'", program'll work wrong
+const genDiff = (wayFile0, wayFile1, format = 'standard') => {
   let absoluteFilepath0;
   let absoluteFilepath1;
   // Why we need to use 'path.resolve(process.cwd(), filepath1)'
@@ -25,14 +32,13 @@ const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
   }
   const diff = getDiff(obj0, obj1);
 
-  if (format === 'json') {
-    return JSON.stringify(diff);
+  let res;
+  try {
+    res = giveRes[format](diff);
+  } catch {
+    res = 'Wrong format.';
   }
-  if (format === 'plain') {
-    return genDiffP(diff);
-  }
-
-  return genDiffS(diff);
+  return res;
 };
 
 export default genDiff;
