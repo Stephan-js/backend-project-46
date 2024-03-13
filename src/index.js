@@ -22,15 +22,14 @@ const genDiff = (wayFile0, wayFile1, format = 'standard') => {
   const obj0 = getParsedData(data0, ext0);
   const obj1 = getParsedData(data1, ext1);
   if (obj0 === undefined || obj1 === undefined) {
-    throw new Error('Sorry, you give wrong files.');
+    throw new Error(`Sorry, you give wrong files. (fiel0: ${ext0}; file1: ${ext1})`);
   }
   const diff = getDiff(obj0, obj1);
 
   try {
     return giveRes[format](diff);
   } catch {
-    console.log(format);
-    throw new Error('Sorry, you give wrong files format.');
+    throw new Error(`Sorry, you give format. (${format})`);
   }
 };
 
