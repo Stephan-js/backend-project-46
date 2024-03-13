@@ -34,19 +34,14 @@ const addObject = (deep, val, sings, name, res, func) => {
 };
 
 // I made special function for Updated value, 'cause this code too big for add in head function
-const checkUpdatedValue = (deep, dif, res) => {
+const addUdatedValue = (deep, dif, res, newValue) => {
   const spaces = getSpaces(deep);
-
-  if (_.isObject(dif.oldValue)) {
-    addObject(deep, dif.oldValue, '-', dif.name, res, getAllFromObj);
+  const sings = newValue ? '+' : '-';
+  const val = newValue ? dif.newValue : dif.oldValue;
+  if (_.isObject(val)) {
+    addObject(deep, val, sings, dif.name, res, getAllFromObj);
   } else {
-    res.push(`${spaces}- ${dif.name}: ${dif.oldValue}`);
-  }
-
-  if (_.isObject(dif.newValue)) {
-    addObject(deep, dif.newValue, '+', dif.name, res, getAllFromObj);
-  } else {
-    res.push(`${spaces}+ ${dif.name}: ${dif.newValue}`);
+    res.push(`${spaces}${sings} ${dif.name}: ${val}`);
   }
 };
 
@@ -55,7 +50,8 @@ const genDiff = (diff, deep = 1) => {
   const spaces = getSpaces(deep);
   diff.forEach((dif) => {
     if (dif.status === 'updated') {
-      checkUpdatedValue(deep, dif, res);
+      addUdatedValue(deep, dif, res, false);
+      addUdatedValue(deep, dif, res, true);
     } else if (!_.isObject(dif.value)) {
       res.push(`${spaces}${sign[dif.status]} ${dif.name}: ${dif.value}`);
     } else if (Array.isArray(dif.value)) {
