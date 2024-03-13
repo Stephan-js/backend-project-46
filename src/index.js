@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import getDiff from './getdiff-src.js';
+import getDiff from './getdiff.js';
 import genDiffP from './formats/plain-form.js';
 import genDiffS from './formats/standard-form.js';
 import getParsedData from './getPersedData.js';
@@ -11,7 +11,6 @@ const giveRes = {
   stylish: (diff) => genDiffS(diff),
 };
 
-// If on default will be "format = 'stylish'", program'll work wrong
 const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
   const data0 = fs.readFileSync(path.resolve(wayFile0), 'utf-8');
   const data1 = fs.readFileSync(path.resolve(wayFile1), 'utf-8');
@@ -21,9 +20,6 @@ const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
 
   const obj0 = getParsedData(data0, ext0);
   const obj1 = getParsedData(data1, ext1);
-  if (obj0 === undefined || obj1 === undefined) {
-    throw new Error(`Sorry, you give wrong type files. (fiel0: ${ext0}; file1: ${ext1})`);
-  }
   const diff = getDiff(obj0, obj1);
 
   try {
