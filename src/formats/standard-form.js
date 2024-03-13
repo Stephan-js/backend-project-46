@@ -46,7 +46,7 @@ const checkUpdatedValue = (deep, dif, res) => {
   }
 };
 
-const genDiffS = (diff, deep = 1) => {
+const genDiff = (diff, deep = 1) => {
   const res = [];
   const spaces = getSpaces(deep);
   diff.forEach((dif) => {
@@ -56,7 +56,7 @@ const genDiffS = (diff, deep = 1) => {
       res.push(`${spaces}${sign[dif.status]} ${dif.name}: ${dif.value}`);
     } else if (Array.isArray(dif.value)) {
       res.push(`${spaces}${sign[dif.status]} ${dif.name}: {`);
-      res.push(genDiffS(dif.value, deep + 1));
+      res.push(genDiff(dif.value, deep + 1));
       res.push(`${spaces}  }`);
     } else {
       res.push(`${spaces}${sign[dif.status]} ${dif.name}: {`);
@@ -70,7 +70,7 @@ const genDiffS = (diff, deep = 1) => {
 
 const makeRes = (diff) => {
   const res = ['{'];
-  res.push(genDiffS(diff));
+  res.push(genDiff(diff));
   res.push('}');
   return res.join('\n');
 };

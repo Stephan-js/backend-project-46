@@ -16,17 +16,18 @@ const addStr = {
   updated: (dif, way) => `Property '${way}${dif.name}' was updated. From ${checkValue(dif.oldValue)} to ${checkValue(dif.newValue)}`,
 };
 
-const genDiffP = (diff, way = '') => {
-  const res = [];
-  diff.forEach((dif) => {
+const genDiff = (diff, way = '') => {
+  const res = diff.map((dif) => {
     if (dif.status !== 'same') {
-      res.push(addStr[dif.status](dif, way));
-    } else if (_.isObject(dif.value)) {
-      res.push(genDiffP(dif.value, `${way}${dif.name}.`));
+      return addStr[dif.status](dif, way);
     }
-  });
+    if (_.isObject(dif.value)) {
+      return genDiff(dif.value, `${way}${dif.name}.`);
+    }
+    return '';
+  }).filter((val) => val !== '');
 
   return res.join('\n');
 };
 
-export default genDiffP;
+export default genDiff;
