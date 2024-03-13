@@ -8,11 +8,11 @@ import getParsedData from './getPersedData.js';
 const giveRes = {
   json: (diff) => JSON.stringify(diff),
   plain: (diff) => genDiffP(diff),
-  standard: (diff) => genDiffS(diff),
+  stylish: (diff) => genDiffS(diff),
 };
 
 // If on default will be "format = 'stylish'", program'll work wrong
-const genDiff = (wayFile0, wayFile1, format = 'standard') => {
+const genDiff = (wayFile0, wayFile1, format = 'stylish') => {
   const data0 = fs.readFileSync(path.resolve(wayFile0), 'utf-8');
   const data1 = fs.readFileSync(path.resolve(wayFile1), 'utf-8');
 
@@ -22,14 +22,14 @@ const genDiff = (wayFile0, wayFile1, format = 'standard') => {
   const obj0 = getParsedData(data0, ext0);
   const obj1 = getParsedData(data1, ext1);
   if (obj0 === undefined || obj1 === undefined) {
-    throw new Error(`Sorry, you give wrong files. (fiel0: ${ext0}; file1: ${ext1})`);
+    throw new Error(`Sorry, you give wrong type files. (fiel0: ${ext0}; file1: ${ext1})`);
   }
   const diff = getDiff(obj0, obj1);
 
   try {
     return giveRes[format](diff);
   } catch {
-    throw new Error(`Sorry, you give format. (${format})`);
+    throw new Error(`Sorry, you give unavailable format. (${format})`);
   }
 };
 
