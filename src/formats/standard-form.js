@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const getSpaces = (deep) => ' '.repeat(deep * 4 - 2);
 const sign = {
-  add: '+',
+  added: '+',
   deleted: '-',
   same: ' ',
 };

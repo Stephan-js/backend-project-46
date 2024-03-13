@@ -11,7 +11,7 @@ const checkValue = (val) => {
 };
 
 const addStr = {
-  add: (dif, way) => `Property '${way}${dif.name}' was added with value: ${checkValue(dif.value)}`,
+  added: (dif, way) => `Property '${way}${dif.name}' was added with value: ${checkValue(dif.value)}`,
   deleted: (dif, way) => `Property '${way}${dif.name}' was removed`,
   update: (dif0, dif1, way) => `Property '${way}${dif0.name}' was updated. From ${checkValue(dif0.value)} to ${checkValue(dif1.value)}`,
 };

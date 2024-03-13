@@ -5,7 +5,7 @@ import _ from 'lodash';
 const getKeys = (file0, file1) => _.uniq(_.concat(_.keys(file0), _.keys(file1))).sort();
 
 // Make custom class for result
-class Res {
+class MakeResObj {
   res = [];
 
   // Add 'Add' function
@@ -23,7 +23,7 @@ class Res {
 
 const getDiff = (obj0, obj1) => {
   const keys = getKeys(obj0, obj1);
-  const res = new Res();
+  const res = new MakeResObj();
 
   for (const key of keys) {
     // If one of val not obj =>
@@ -36,11 +36,11 @@ const getDiff = (obj0, obj1) => {
           // If diffrent val
         } else {
           res.push(key, obj0[key], 'deleted');
-          res.push(key, obj1[key], 'add');
+          res.push(key, obj1[key], 'added');
         }
         // If only one val exist
       } else if (obj0[key] !== undefined) res.push(key, obj0[key], 'deleted');
-      else res.push(key, obj1[key], 'add');
+      else res.push(key, obj1[key], 'added');
       // If both object
     } else {
       const val = getDiff(obj0[key], obj1[key]);
