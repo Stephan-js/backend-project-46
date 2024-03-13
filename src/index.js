@@ -13,31 +13,19 @@ const giveRes = {
 
 // If on default will be "format = 'stylish'", program'll work wrong
 const genDiff = (wayFile0, wayFile1, format = 'standard') => {
-  let absoluteFilepath0;
-  let absoluteFilepath1;
-  // Why we need to use 'path.resolve(process.cwd(), filepath1)'
-  // If 'path.resolve(filepath1)' give same result?
-  try {
-    absoluteFilepath0 = fs.readFileSync(path.resolve(wayFile0));
-    absoluteFilepath1 = fs.readFileSync(path.resolve(wayFile1));
-  } catch {
-    // If user type wrong path
-    return "Sorry, program can't find files.";
-  }
+  const data0 = fs.readFileSync(path.resolve(wayFile0));
+  const data1 = fs.readFileSync(path.resolve(wayFile1));
 
-  const obj0 = getParsedData(absoluteFilepath0, path.extname(wayFile0));
-  const obj1 = getParsedData(absoluteFilepath1, path.extname(wayFile1));
+  const ext0 = path.extname(wayFile0);
+  const ext1 = path.extname(wayFile1);
+
+  const obj0 = getParsedData(data0, ext0);
+  const obj1 = getParsedData(data1, ext1);
   if (obj0 === undefined || obj1 === undefined) {
-    return 'Sorry, you give wrong type file.';
+    return 'Sorry, you give wrong files.';
   }
   const diff = getDiff(obj0, obj1);
-
-  let res;
-  try {
-    res = giveRes[format](diff);
-  } catch {
-    res = 'Wrong format.';
-  }
+  const res = giveRes[format](diff);
 
   return res;
 };
