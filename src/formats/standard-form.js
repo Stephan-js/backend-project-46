@@ -12,7 +12,7 @@ const getAllFromObj = (obj, deep) => {
   const spaces = getSpaces(deep);
   const keys = _.keys(obj).sort();
 
-  for (const key of keys) {
+  keys.forEach((key) => {
     if (!_.isObject(obj[key])) {
       res.push(`${spaces}  ${key}: ${obj[key]}`);
     } else {
@@ -20,37 +20,59 @@ const getAllFromObj = (obj, deep) => {
       res.push(getAllFromObj(obj[key], deep + 1));
       res.push(`${spaces}  }`);
     }
-  }
+  });
 
   return res.join('\n');
+};
+
+// I made special function for Updated value, 'cause this code too big for add in head function
+const checkUpdatedValue = (deep, dif, res) => {
+  const spaces = getSpaces(deep);
+
+  if (_.isObject(dif.oldValue)) {
+    res.push(`${spaces}- ${dif.name}: {`);
+    res.push(getAllFromObj(dif.oldValue, deep + 1));
+    res.push(`${spaces}  }`);
+  } else {
+    res.push(`${spaces}- ${dif.name}: ${dif.oldValue}`);
+  }
+
+  if (_.isObject(dif.newValue)) {
+    res.push(`${spaces}+ ${dif.name}: {`);
+    res.push(getAllFromObj(dif.newValue, deep + 1));
+    res.push(`${spaces}  }`);
+  } else {
+    res.push(`${spaces}+ ${dif.name}: ${dif.newValue}`);
+  }
 };
 
 const genDiffS = (diff, deep = 1) => {
   const res = [];
   const spaces = getSpaces(deep);
-  for (const dif of diff) {
-    if (!_.isObject(dif.value)) {
+  diff.forEach((dif) => {
+    if (dif.status === 'updated') {
+      checkUpdatedValue(deep, dif, res);
+    } else if (!_.isObject(dif.value)) {
       res.push(`${spaces}${sign[dif.status]} ${dif.name}: ${dif.value}`);
     } else if (Array.isArray(dif.value)) {
-      const val = genDiffS(dif.value, deep + 1);
       res.push(`${spaces}${sign[dif.status]} ${dif.name}: {`);
-      res.push(val);
+      res.push(genDiffS(dif.value, deep + 1));
       res.push(`${spaces}  }`);
     } else {
       res.push(`${spaces}${sign[dif.status]} ${dif.name}: {`);
       res.push(getAllFromObj(dif.value, deep + 1));
       res.push(`${spaces}  }`);
     }
-  }
+  });
 
   return res.join('\n');
 };
 
-const giveRes = (diff) => {
+const makeRes = (diff) => {
   const res = ['{'];
   res.push(genDiffS(diff));
   res.push('}');
   return res.join('\n');
 };
 
-export default giveRes;
+export default makeRes;
