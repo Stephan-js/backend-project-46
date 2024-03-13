@@ -3,7 +3,7 @@ import fs from 'fs';
 import getDiff from './getdiff-src.js';
 import genDiffP from './formats/plain-form.js';
 import genDiffS from './formats/standard-form.js';
-import readAndParseFile from './getPersedData.js';
+import getParsedData from './getPersedData.js';
 
 const giveRes = {
   json: (diff) => JSON.stringify(diff),
@@ -25,8 +25,8 @@ const genDiff = (wayFile0, wayFile1, format = 'standard') => {
     return "Sorry, program can't find files.";
   }
 
-  const obj0 = readAndParseFile(absoluteFilepath0, path.extname(wayFile0));
-  const obj1 = readAndParseFile(absoluteFilepath1, path.extname(wayFile1));
+  const obj0 = getParsedData(absoluteFilepath0, path.extname(wayFile0));
+  const obj1 = getParsedData(absoluteFilepath1, path.extname(wayFile1));
   if (obj0 === undefined || obj1 === undefined) {
     return 'Sorry, you give wrong type file.';
   }
@@ -38,6 +38,7 @@ const genDiff = (wayFile0, wayFile1, format = 'standard') => {
   } catch {
     res = 'Wrong format.';
   }
+
   return res;
 };
 

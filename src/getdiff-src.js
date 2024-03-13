@@ -6,9 +6,7 @@ const getKeys = (file0, file1) => _.uniq(_.concat(_.keys(file0), _.keys(file1)))
 
 // Make custom class for result
 class Res {
-  constructor() {
-    this.res = [];
-  }
+  res = [];
 
   // Add 'Add' function
   push(n, v, s) {
@@ -40,7 +38,7 @@ const getDiff = (obj0, obj1) => {
           res.push(key, obj0[key], 'deleted');
           res.push(key, obj1[key], 'add');
         }
-        // If only one have val
+        // If only one val exist
       } else if (obj0[key] !== undefined) res.push(key, obj0[key], 'deleted');
       else res.push(key, obj1[key], 'add');
       // If both object
