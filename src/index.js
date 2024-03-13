@@ -29,6 +29,7 @@ const genDiff = (wayFile0, wayFile1, format = 'standard') => {
   try {
     return giveRes[format](diff);
   } catch {
+    console.log(format);
     throw new Error('Sorry, you give wrong files format.');
   }
 };
