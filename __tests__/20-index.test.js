@@ -79,11 +79,10 @@ test('work2', () => {
   expect(genDiff('__fixtures__/json/fileh1.json', '__fixtures__/json/fileh2.json', 'plain')).toBe(result3);
 });
 
-// Need Debug
-// test('fail0', () => {
-//   expect(genDiff('')).toThrow('EISDIR: illegal operation on a directory, read');
-// });
+test('fail0', () => {
+  expect(() => genDiff('')).toThrow();
+});
 
-// test('fail1', () => {
-//   expect(genDiff('files/json/file1.json', '')).toThrow(Error);
-// });
+test('fail1', () => {
+  expect(() => genDiff('files/json/file1.json', 'abc/dcb')).toThrow();
+});

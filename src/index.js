@@ -13,8 +13,8 @@ const giveRes = {
 
 // If on default will be "format = 'stylish'", program'll work wrong
 const genDiff = (wayFile0, wayFile1, format = 'standard') => {
-  const data0 = fs.readFileSync(path.resolve(wayFile0));
-  const data1 = fs.readFileSync(path.resolve(wayFile1));
+  const data0 = fs.readFileSync(path.resolve(wayFile0), 'utf-8');
+  const data1 = fs.readFileSync(path.resolve(wayFile1), 'utf-8');
 
   const ext0 = path.extname(wayFile0);
   const ext1 = path.extname(wayFile1);
