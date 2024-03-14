@@ -18,10 +18,10 @@ const addStr = {
 
 const genDiff = (diff, way = '') => {
   const res = diff.map((dif) => {
-    if (dif.status !== 'same') {
+    if (dif.status !== 'same' && dif.status !== 'object') {
       return addStr[dif.status](dif, way);
     }
-    if (_.isObject(dif.value)) {
+    if (dif.status === 'object') {
       return genDiff(dif.value, `${way}${dif.name}.`);
     }
     return '';

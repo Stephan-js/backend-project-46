@@ -14,7 +14,7 @@ const getDiff = (obj0, obj1) => {
     }
     if (_.isObject(obj0[key]) && _.isObject(obj1[key])) {
       const val = getDiff(obj0[key], obj1[key]);
-      return { name: key, value: val, status: 'same' };
+      return { name: key, value: val, status: 'object' };
     }
     if (obj0[key] === obj1[key]) {
       return { name: key, value: obj0[key], status: 'same' };

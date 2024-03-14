@@ -1,10 +1,12 @@
 import _ from 'lodash';
 
+// I made so many different functions to make code understandable
 const getSpaces = (deep) => ' '.repeat(deep * 4 - 2);
 const sign = {
   added: '+',
   deleted: '-',
   same: ' ',
+  object: ' ',
 };
 
 const getAllFromObj = (obj, deep) => {
@@ -25,23 +27,24 @@ const getAllFromObj = (obj, deep) => {
   return res.join('\n');
 };
 
-// Function to make code shorter
-const addObject = (deep, val, sings, name, res, func) => {
+const addObj = (dif, deep, res, func) => {
   const spaces = getSpaces(deep);
-  res.push(`${spaces}${sings} ${name}: {`);
-  res.push(func(val, deep + 1));
+
+  res.push(`${spaces}${sign[dif.status]} ${dif.name}: {`);
+  res.push(func(dif.value, deep + 1));
   res.push(`${spaces}  }`);
 };
 
-// I made special function for Updated value, 'cause this code too big for add in head function
-const addUdatedValue = (deep, dif, res, newValue) => {
+const checkUpdatedVal = (dif, deep, res, val) => {
   const spaces = getSpaces(deep);
-  const sings = newValue ? '+' : '-';
-  const val = newValue ? dif.newValue : dif.oldValue;
+  const signs = (val === dif.newValue) ? '+' : '-';
+
   if (_.isObject(val)) {
-    addObject(deep, val, sings, dif.name, res, getAllFromObj);
+    res.push(`${spaces}${signs} ${dif.name}: {`);
+    res.push(getAllFromObj(val, deep + 1));
+    res.push(`${spaces}  }`);
   } else {
-    res.push(`${spaces}${sings} ${dif.name}: ${val}`);
+    res.push(`${spaces}${signs} ${dif.name}: ${val}`);
   }
 };
 
@@ -50,14 +53,14 @@ const genDiff = (diff, deep = 1) => {
   const spaces = getSpaces(deep);
   diff.forEach((dif) => {
     if (dif.status === 'updated') {
-      addUdatedValue(deep, dif, res, false);
-      addUdatedValue(deep, dif, res, true);
-    } else if (!_.isObject(dif.value)) {
-      res.push(`${spaces}${sign[dif.status]} ${dif.name}: ${dif.value}`);
-    } else if (Array.isArray(dif.value)) {
-      addObject(deep, dif.value, sign[dif.status], dif.name, res, genDiff);
+      checkUpdatedVal(dif, deep, res, dif.oldValue);
+      checkUpdatedVal(dif, deep, res, dif.newValue);
+    } else if (dif.status === 'object') {
+      addObj(dif, deep, res, genDiff);
+    } else if (_.isObject(dif.value)) {
+      addObj(dif, deep, res, getAllFromObj);
     } else {
-      addObject(deep, dif.value, sign[dif.status], dif.name, res, getAllFromObj);
+      res.push(`${spaces}${sign[dif.status]} ${dif.name}: ${dif.value}`);
     }
   });
 
