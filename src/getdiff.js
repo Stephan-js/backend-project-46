@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 import _ from 'lodash';
 
 const getKeys = (file0, file1) => _.uniq(_.concat(_.keys(file0), _.keys(file1))).sort();
