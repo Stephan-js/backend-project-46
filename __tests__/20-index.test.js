@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals';
-import { result0, result1, result2 } from '../__fixtures__/results.js';
+import { result0, result1, result2 } from '../__fixtures__/test/results.js';
 import genDiff from '../src/index.js';
 
 test('work0', () => {
