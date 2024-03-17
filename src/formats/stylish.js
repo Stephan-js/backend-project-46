@@ -1,6 +1,5 @@
 import _ from 'lodash';
 
-// I made so many different functions to make code understandable
 const getSpaces = (deep) => ' '.repeat(deep * 4 - 2);
 const sign = {
   added: '+',
@@ -67,11 +66,11 @@ const genDiff = (diff, deep = 1) => {
   return res.join('\n');
 };
 
-const makeRes = (diff) => {
+const genRes = (diff) => {
   const res = ['{'];
   res.push(genDiff(diff));
   res.push('}');
   return res.join('\n');
 };
 
-export default makeRes;
+export default genRes;
