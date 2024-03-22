@@ -11,15 +11,15 @@ const sign = {
 const getAllFromObj = (obj, deep) => {
   const res = [];
   const spaces = getSpaces(deep);
-  const keys = _.keys(obj).sort();
+  const keys = _.sortBy(_.keys(obj));
 
   keys.forEach((key) => {
     if (!_.isObject(obj[key])) {
-      res.push(`${spaces}  ${key}: ${obj[key]}`);
+      res[res.length] = (`${spaces}  ${key}: ${obj[key]}`);
     } else {
-      res.push(`${spaces}  ${key}: {`);
-      res.push(getAllFromObj(obj[key], deep + 1));
-      res.push(`${spaces}  }`);
+      res[res.length] = (`${spaces}  ${key}: {`);
+      res[res.length] = (getAllFromObj(obj[key], deep + 1));
+      res[res.length] = (`${spaces}  }`);
     }
   });
 
@@ -29,9 +29,9 @@ const getAllFromObj = (obj, deep) => {
 const addObj = (dif, deep, res, func) => {
   const spaces = getSpaces(deep);
 
-  res.push(`${spaces}${sign[dif.status]} ${dif.name}: {`);
-  res.push(func(dif.value, deep + 1));
-  res.push(`${spaces}  }`);
+  res[res.length] = (`${spaces}${sign[dif.status]} ${dif.name}: {`);
+  res[res.length] = (func(dif.value, deep + 1));
+  res[res.length] = (`${spaces}  }`);
 };
 
 const checkUpdatedVal = (dif, deep, res, val) => {
@@ -39,11 +39,11 @@ const checkUpdatedVal = (dif, deep, res, val) => {
   const signs = (val === dif.newValue) ? '+' : '-';
 
   if (_.isObject(val)) {
-    res.push(`${spaces}${signs} ${dif.name}: {`);
-    res.push(getAllFromObj(val, deep + 1));
-    res.push(`${spaces}  }`);
+    res[res.length] = (`${spaces}${signs} ${dif.name}: {`);
+    res[res.length] = (getAllFromObj(val, deep + 1));
+    res[res.length] = (`${spaces}  }`);
   } else {
-    res.push(`${spaces}${signs} ${dif.name}: ${val}`);
+    res[res.length] = (`${spaces}${signs} ${dif.name}: ${val}`);
   }
 };
 
@@ -59,18 +59,13 @@ const genDiff = (diff, deep = 1) => {
     } else if (_.isObject(dif.value)) {
       addObj(dif, deep, res, getAllFromObj);
     } else {
-      res.push(`${spaces}${sign[dif.status]} ${dif.name}: ${dif.value}`);
+      res[res.length] = (`${spaces}${sign[dif.status]} ${dif.name}: ${dif.value}`);
     }
   });
 
   return res.join('\n');
 };
 
-const genRes = (diff) => {
-  const res = ['{'];
-  res.push(genDiff(diff));
-  res.push('}');
-  return res.join('\n');
-};
+const genRes = (diff) => ['{', genDiff(diff), '}'].join('\n');
 
 export default genRes;

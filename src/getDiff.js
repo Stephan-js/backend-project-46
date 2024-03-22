@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
-const getKeys = (file0, file1) => _.uniq(_.concat(_.keys(file0), _.keys(file1))).sort();
+const getKeys = (file0, file1) => _.uniq(_.concat(_.keys(file0), _.keys(file1)));
 
 const getDiff = (obj0, obj1) => {
-  const keys = getKeys(obj0, obj1);
+  const keys = _.sortBy(getKeys(obj0, obj1));
   const treePart = keys.map((key) => {
     if (!_.has(obj0, key)) {
       return { name: key, value: obj1[key], status: 'added' };
