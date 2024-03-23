@@ -32,7 +32,7 @@ If you're using Ubuntu or Windows, you can follow these manual installation step
      
    ### Vidio Guide
 
-   [![asciicast](https://asciinema.org/a/641195.svg)](https://asciinema.org/a/641195)
+   [![asciicast](https://asciinema.org/a/tRY5ClBIH5x3YOGBVscsU7WRG.svg)](https://asciinema.org/a/tRY5ClBIH5x3YOGBVscsU7WRG)
 
 ## Usage
 
