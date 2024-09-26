@@ -144,11 +144,7 @@ Would produce the following JSON output:
 
 ## Badges
 
-### Head test status:
-
-[![Actions Status](https://github.com/Stepan19999993/frontend-project-46/actions/workflows/node.yml/badge.svg)](https://github.com/Stepan19999993/frontend-project-46/actions)
-
-### Support test status:
+### Test status:
 
 [![Actions Status](https://github.com/Stepan19999993/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Stepan19999993/frontend-project-46/actions)
 
