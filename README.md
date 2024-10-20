@@ -169,9 +169,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 Developed with ❤️ by [Stephan](https://github.com/Stephan-js)
-
-### Key Improvements:
-- Clarified instructions for module installation and importing.
-- Added examples for JSON and YAML file formats.
-- Improved the structure and flow of the usage section.
-- Provided a clear license section.
