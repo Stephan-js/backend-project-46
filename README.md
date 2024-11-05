@@ -166,6 +166,8 @@ The following file formats are supported:
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
+
 ---
+
 
 Developed with ❤️ by [Stephan](https://github.com/Stephan-js)
