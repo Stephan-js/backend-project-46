@@ -160,7 +160,7 @@ The following file formats are supported:
 
 ### Maintainability:
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/539932a003647964e843/maintainability)](https://codeclimate.com/github/Stepan19999993/backend-project-46/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f7a4398328e039d1ffac/maintainability)](https://codeclimate.com/github/Stephan-js/backend-project-46/maintainability)
 
 ## License
 
