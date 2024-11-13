@@ -19,15 +19,15 @@ For both Ubuntu and Windows users, follow these steps to add the utility to your
 1. **Install the Module**:
    - Open a terminal and run the following command to add the module to your project:
      ```bash
-     npm install https://github.com/Stepan19999993/frontend-project-46
+     npm install https://github.com/Stepan19999993/backend-project-46
      ```
 
 2. **Import the Module**:
    - To use the module in your project, import it as follows:
      ```js
-     import findDiff from '@hexlet/code';
+     import findDiff from 'find-differences';
      // or for CommonJS
-     const findDiff = require('@hexlet/code');
+     const findDiff = require('find-differences');
      ```
 
 ### Video Guide
@@ -156,11 +156,11 @@ The following file formats are supported:
 
 ### Test Status:
 
-[![Actions Status](https://github.com/Stephan-js/frontend-project-46/actions/workflows/node.yml/badge.svg)](https://github.com/Stephan-js/frontend-project-46/actions)
+[![Actions Status](https://github.com/Stephan-js/backend-project-46/actions/workflows/node.yml/badge.svg)](https://github.com/Stephan-js/backend-project-46/actions)
 
 ### Maintainability:
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/539932a003647964e843/maintainability)](https://codeclimate.com/github/Stepan19999993/frontend-project-46/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/539932a003647964e843/maintainability)](https://codeclimate.com/github/Stepan19999993/backend-project-46/maintainability)
 
 ## License
 
