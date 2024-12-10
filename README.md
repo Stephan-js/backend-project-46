@@ -1,50 +1,51 @@
-# Find Differences
+# **Find Differences**
 
-TODO: update readme file
+**Find Differences** is a powerful JavaScript utility that compares two files and identifies differences between them. It supports multiple output formats — **Standard**, **Plain**, and **JSON** — making it an essential tool for analyzing configuration changes in files like JSON or YAML.
 
-**Find Differences** is a JavaScript utility designed to compare two files and find the differences between them. It can output the differences in three formats: **Standard**, **Plain**, and **JSON**. This is particularly useful for configuration files in formats like JSON or YAML.
+---
 
-## Overview
+## ✨ Key Features
 
-This utility helps you detect changes between two files and represent them in a structured manner, supporting multiple formats to suit different use cases.
+- Compare files in **JSON** and **YAML** formats.
+- Display differences in three formats:
+  - **Standard**: A human-readable structured format.
+  - **Plain**: A concise textual summary.
+  - **JSON**: A machine-readable structured format.
+- Simple command-line interface for quick and efficient use.
 
-## Requirements
+---
+
+## 🛠️ Requirements
 
 - **Node.js** (v14.x or later)
 
-## Installation
+---
 
-### Module Installation
+## 📥 Installation
 
-For both Ubuntu and Windows users, follow these steps to add the utility to your project:
+Follow these steps to add **Find Differences** to your project:
 
-1. **Install the Module**:
-   - Open a terminal and run the following command to add the module to your project:
+1. **Install the Module:**
+   - Open your terminal and run:
      ```bash
      npm install https://github.com/Stepan19999993/backend-project-46
      ```
 
-2. **Import the Module**:
-   - To use the module in your project, import it as follows:
-     ```js
-     import findDiff from 'find-differences';
-     // or for CommonJS
-     const findDiff = require('find-differences');
+2. **Import the Utility:**
+   - Add it to your project using:
+     ```javascript
+     import findDiff from 'find-differences'; // ES Modules
+     // OR
+     const findDiff = require('find-differences'); // CommonJS
      ```
 
-### Video Guide
+---
 
-For a video tutorial on how to install and use the module, click the link below:
+## 🚀 Usage
 
-[![asciicast](https://asciinema.org/a/tRY5ClBIH5x3YOGBVscsU7WRG.svg)](https://asciinema.org/a/tRY5ClBIH5x3YOGBVscsU7WRG)
+Use the utility from the command line to compare files and specify the output format.
 
-## Usage
-
-You can compare two files in various formats (JSON, YAML) by running the utility with different output options.
-
-### Standard Format
-
-For a standard format output, run the following command:
+### Standard Format (Default)
 
 ```bash
 gendiff file0.json file1.json
@@ -52,27 +53,23 @@ gendiff file0.json file1.json
 
 ### Plain Format
 
-For a plain text summary of changes, use:
-
 ```bash
 gendiff --format plain file0.json file1.json
 ```
 
 ### JSON Format
 
-To get the output in JSON format, use:
-
 ```bash
 gendiff --format json file0.json file1.json
 ```
 
-## Example
+---
+
+## 📋 Example
 
 ### Input Files
 
-Suppose you have the following two JSON files:
-
-`file0.json`:
+**`file0.json`:**
 ```json
 {
   "host": "github.com",
@@ -82,7 +79,7 @@ Suppose you have the following two JSON files:
 }
 ```
 
-`file1.json`:
+**`file1.json`:**
 ```json
 {
   "timeout": 20,
@@ -91,15 +88,16 @@ Suppose you have the following two JSON files:
 }
 ```
 
-### Standard Format Output
+### Output Formats
 
-Running the utility with the command:
+#### Standard Format
+
+Command:
 ```bash
 gendiff file0.json file1.json
 ```
 
-Would produce the following output:
-
+Output:
 ```
 {
   - follow: false
@@ -111,15 +109,14 @@ Would produce the following output:
 }
 ```
 
-### Plain Format Output
+#### Plain Format
 
-Running the command:
+Command:
 ```bash
 gendiff --format plain file0.json file1.json
 ```
 
-Would produce this plain text summary:
-
+Output:
 ```
 Property 'follow' was removed
 Property 'proxy' was removed
@@ -127,15 +124,14 @@ Property 'timeout' was updated. From '50' to '20'
 Property 'verbose' was added with value: true
 ```
 
-### JSON Format Output
+#### JSON Format
 
-Running the command:
+Command:
 ```bash
 gendiff --format json file0.json file1.json
 ```
 
-Would produce this JSON output:
-
+Output:
 ```json
 [
   {"name": "follow", "value": false, "status": "deleted"},
@@ -147,29 +143,37 @@ Would produce this JSON output:
 ]
 ```
 
-## Supported File Formats
+---
 
-The following file formats are supported:
+## 🔧 Supported File Formats
 
-- JSON
-- YAML
-
-## Badges
-
-### Test Status:
-
-[![Actions Status](https://github.com/Stephan-js/backend-project-46/actions/workflows/node.yml/badge.svg)](https://github.com/Stephan-js/backend-project-46/actions)
-
-### Maintainability:
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/f7a4398328e039d1ffac/maintainability)](https://codeclimate.com/github/Stephan-js/backend-project-46/maintainability)
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
+- **JSON**
+- **YAML**
 
 ---
 
+## 🎖️ Badges
+
+- **Test Status**:  
+  [![Actions Status](https://github.com/Stephan-js/backend-project-46/actions/workflows/node.yml/badge.svg)](https://github.com/Stephan-js/backend-project-46/actions)
+
+- **Maintainability**:  
+  [![Maintainability](https://api.codeclimate.com/v1/badges/f7a4398328e039d1ffac/maintainability)](https://codeclimate.com/github/Stephan-js/backend-project-46/maintainability)
+
+---
+
+## 📽️ Video Guide
+
+Watch a tutorial on installing and using **Find Differences**:
+
+[![asciicast](https://asciinema.org/a/tRY5ClBIH5x3YOGBVscsU7WRG.svg)](https://asciinema.org/a/tRY5ClBIH5x3YOGBVscsU7WRG)
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+---
 
 Developed with ❤️ by [Stephan](https://github.com/Stephan-js)
